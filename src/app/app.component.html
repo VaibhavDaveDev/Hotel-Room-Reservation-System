@@ -1,0 +1,78 @@
+<div class="min-h-screen p-8 flex flex-col items-center font-sans text-slate-800">
+
+  <div class="max-w-4xl w-full">
+
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 mb-8">
+      <h1 class="text-2xl font-bold mb-4 text-slate-900">Hotel Room Reservation</h1>
+
+      <div class="flex flex-wrap gap-4 items-end">
+        <div class="flex flex-col gap-1">
+          <label class="text-sm font-semibold text-slate-500">No of Rooms (Max 5)</label>
+          <input type="number" max="5" min="1" [(ngModel)]="requestCount"
+            class="border border-slate-300 rounded-lg px-4 py-2 w-40 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="e.g., 3" />
+        </div>
+
+        <button (click)="bookRooms()"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition flex items-center gap-2">
+          Book
+        </button>
+
+        <button (click)="randomize()"
+          class="bg-green-100 text-black hover:bg-green-200 px-4 py-2 rounded-lg font-medium transition flex items-center gap-2 ml-auto">
+          Randomize
+        </button>
+
+        <button (click)="reset()"
+          class="bg-slate-100 text-slate-600 hover:bg-slate-200 px-4 py-2 rounded-lg font-medium transition flex items-center gap-2">
+          Reset
+        </button>
+      </div>
+
+      <div class="mt-4 p-3 bg-slate-50 rounded text-sm text-slate-700 border border-slate-100">
+        {{ message }}
+      </div>
+    </div>
+
+    <div class="flex gap-4">
+      <div
+        class="w-16 flex flex-col items-center justify-center bg-slate-200 rounded-lg border-2 border-slate-300 text-slate-400 font-bold text-xs">
+        <div class="rotate-[-90deg] whitespace-nowrap">STAIRS / LIFT</div>
+      </div>
+
+      <div class="flex-1 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+
+        @for (floorNum of floors; track floorNum) {
+        <div class="flex items-center mb-3 last:mb-0">
+          <div class="w-16 text-xs font-bold text-slate-400 uppercase">
+            Floor {{ floorNum }}
+          </div>
+
+          <div class="flex gap-2">
+            @for (room of getRoomsByFloor(floorNum); track room.id) {
+            <div [title]="'Room ' + room.roomNumber"
+              class="w-10 h-10 rounded border flex items-center justify-center text-xs font-medium transition-all"
+              [class.bg-red-500]="room.isBooked" [class.border-red-600]="room.isBooked"
+              [class.text-white]="room.isBooked" [class.bg-emerald-50]="!room.isBooked"
+              [class.border-emerald-200]="!room.isBooked" [class.text-emerald-700]="!room.isBooked"
+              [class.hover:bg-emerald-100]="!room.isBooked">
+              {{ room.roomNumber }}
+            </div>
+            }
+          </div>
+        </div>
+        }
+
+      </div>
+    </div>
+
+    <!-- GitHub Link -->
+    <div class="mt-8 text-center pb-8">
+      <a href="https://github.com/VaibhavDaveDev/Hotel-Room-Reservation-System.git" target="_blank"
+        class="text-slate-500 hover:text-slate-800 transition-all inline-flex items-center gap-2 opacity-80 hover:opacity-100">
+        <img src="https://cdn.simpleicons.org/github/64748b" alt="GitHub" class="w-6 h-6" />
+      </a>
+    </div>
+
+  </div>
+</div>
