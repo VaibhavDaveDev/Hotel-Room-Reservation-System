@@ -16,8 +16,8 @@ This Angular application provides a visual interface to book rooms based on the 
 ## How to Run
 
 ### Prerequisites
-- **Node.js**: [Download and install Node.js](https://nodejs.org/)
-- **Angular CLI**: Install globally using `npm install -g @angular/cli`
+- **Node.js**: Node.js: v20.19.0 (or latest v20 LTS) [Download and install Node.js](https://nodejs.org/)
+- **Angular CLI**: Angular: v21.1.0 Install globally using `npm install -g @angular/cli`
 
 ### Steps
 1.  Clone the repository:
